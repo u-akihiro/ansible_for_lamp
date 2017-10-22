@@ -1,0 +1,14 @@
+- name: ufw set policy
+  ufw:
+    policy: deny
+    state: enabled
+- name: allow http port
+  ufw:
+    rule: allow
+    port: 80
+    proto: tcp
+- name: allow ssh port
+  ufw:
+    rule: allow
+    port: 22
+    proto: tcp
