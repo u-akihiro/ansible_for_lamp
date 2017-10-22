@@ -2,13 +2,11 @@
   ufw:
     policy: deny
     state: enabled
-- name: allow http port
+- name: allow service ports
   ufw:
     rule: allow
-    port: 80
-    proto: tcp
-- name: allow ssh port
-  ufw:
-    rule: allow
-    port: 22
-    proto: tcp
+    port: "{{ item }}"
+  with_items:
+    - "80"
+    - "443"
+    - "22"
