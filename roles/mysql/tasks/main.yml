@@ -1,0 +1,44 @@
+- name: install debconf-utils
+  apt:
+    name: debconf-utils
+    state: latest
+- name: set root password
+  debconf:
+    name: mysql-server
+    question: "mysql-server/root_password"
+    value: "{{ root_password }}"
+    vtype: password
+- name: set root password again
+  debconf:
+    name: mysql-server
+    question: "mysql-server/root_password_again"
+    value: "{{ root_password }}"
+    vtype: password
+- name: install mysql server
+  apt:
+    name: mysql-server=5.7.*
+    state: present
+  notify:
+    - restart mysql server
+- name: install mysql client
+  apt:
+    name: mysql-client=5.7.*
+    state: present
+- name: install python-mysqldb
+  apt:
+    name: python-mysqldb
+    state: present
+- name: create database for wordpress
+  mysql_db:
+    login_user: root
+    login_password: "{{ root_password }}"
+    name: wordpress
+    state: present
+- name: add user for wordpress
+  mysql_user:
+    login_user: root
+    login_password: "{{ root_password }}"
+    name: wordpress
+    password: "{{ wordpress_password }}"
+    priv: 'wordpress.*:ALL'
+    state: present
