@@ -7,4 +7,5 @@
     - apache
     - mysql
     - php
-    - ufw
+    # - ufw
+    - iptables

@@ -1,0 +1,6 @@
+- name: setup iptables
+  copy:
+    src: templates/iptables.rule
+    dest: /etc/iptables
+    force: yes
+    backup: yes
