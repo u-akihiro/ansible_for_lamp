@@ -4,3 +4,5 @@
     dest: /etc/iptables
     force: yes
     backup: yes
+  notify:
+    - restore iptables.rule
