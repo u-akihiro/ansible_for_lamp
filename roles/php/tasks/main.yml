@@ -14,3 +14,7 @@
     dest: /etc/php/7.0/fpm
     force: yes
     backup: yes
+- name: install php7.0-mysql
+  apt:
+    name: php7.0-mysql
+    state: present

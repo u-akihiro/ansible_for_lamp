@@ -10,6 +10,16 @@
     state: present
   notify:
     - restart apache2
+- name: install libapache2-mod-php
+  apt:
+    name: libapache2-mod-php
+    state: present
+- name: enable php7.0
+  apache2_module:
+    name: php7.0
+    state: present
+  notify:
+    - restart apache2
 - name: copy apach2 conf file to remote
   copy:
     src: templates/apache2.conf
