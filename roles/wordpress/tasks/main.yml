@@ -1,0 +1,15 @@
+- name: download wordpress
+  get_url:
+    url: https://ja.wordpress.org/wordpress-4.8.2-ja.zip
+    dest: /tmp
+- name: install unzip command
+  apt:
+    name: unzip
+    state: present
+- name: unarchive wordpress zip file
+  unarchive:
+    src: /tmp/wordpress-4.8.2-ja.zip
+    dest: /var/www/
+    remote_src: yes
+# - name: move wordpress to www dir
+#   shell: mv /tmp/wordpress /var/www/wordpress
