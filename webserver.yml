@@ -10,3 +10,4 @@
     # - ufw
     - iptables
     - wordpress
+    - curl

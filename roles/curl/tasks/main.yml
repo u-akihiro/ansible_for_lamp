@@ -1,0 +1,8 @@
+- name: install curl
+  apt:
+    name: curl
+    state: present
+- name: install php-curl
+  apt:
+    name: php-curl
+    state: present
